@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mathakit — Manipulation & Méthode de Singapour | Liban</title>
+  <meta name="description" content="Mathakit propose des kits pédagogiques de mathématiques basés sur la méthode de Singapour pour les écoles et les parents au Liban. Vidéos tutoriels incluses. Précommande maintenant.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1a3a5c;
+      --navy-light: #234b73;
+      --teal: #2a9d8f;
+      --teal-light: #e8f5f3;
+      --orange: #e76f51;
+      --orange-light: #fdf0ec;
+      --brown: #8b6914;
+      --cream: #faf8f5;
+      --text: #1f2937;
+      --text-light: #6b7280;
+      --border: #e5e7eb;
+      --white: #ffffff;
+      --shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: var(--white);
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .logo img { height: 48px; width: auto; }
+    .logo-text {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cta {
+      background: var(--navy);
+      color: var(--white) !important;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--navy-light); transform: translateY(-1px); }
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 140px 24px 100px;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
+      text-align: center;
+    }
+    .hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal-light);
+      color: var(--teal);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 56px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .hero .tagline {
+      font-size: 22px;
+      color: var(--teal);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+      box-shadow: var(--shadow-lg);
+    }
+    .btn-primary:hover {
+      background: var(--navy-light);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 25px -5px rgba(26,58,92,0.15);
+    }
+    .btn-secondary {
+      background: var(--white);
+      color: var(--navy);
+      border: 2px solid var(--border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--navy);
+      background: var(--cream);
+    }
+
+    /* Sections */
+    section { padding: 80px 24px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 56px;
+    }
+    .section-header h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .section-header p {
+      font-size: 18px;
+      color: var(--text-light);
+    }
+
+    /* Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+    .feature-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .feature-card:nth-child(1) .feature-icon { background: var(--teal-light); }
+    .feature-card:nth-child(2) .feature-icon { background: var(--orange-light); }
+    .feature-card:nth-child(3) .feature-icon { background: #e8f0fe; }
+    .feature-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 15px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Audience */
+    .audience {
+      background: var(--cream);
+    }
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .audience-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 40px;
+      border: 1px solid var(--border);
+    }
+    .audience-card h3 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .audience-card p {
+      font-size: 16px;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+    .audience-card ul {
+      list-style: none;
+    }
+    .audience-card li {
+      padding: 8px 0;
+      font-size: 15px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .audience-card li::before {
+      content: "✓";
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    /* Video Section */
+    .videos {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+    }
+    .videos h2 { color: var(--white); }
+    .videos .section-header p { color: rgba(255,255,255,0.7); }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .video-placeholder {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      aspect-ratio: 16/9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .video-placeholder:hover {
+      background: rgba(255,255,255,0.12);
+      transform: scale(1.02);
+    }
+    .play-btn {
+      width: 60px;
+      height: 60px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy);
+      font-size: 24px;
+      transition: transform 0.2s;
+    }
+    .video-placeholder:hover .play-btn { transform: scale(1.1); }
+    .video-placeholder span {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+    }
+
+    /* Preorder CTA */
+    .preorder {
+      background: linear-gradient(135deg, var(--orange-light) 0%, var(--cream) 100%);
+    }
+    .preorder-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 64px;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+    .preorder-card h2 {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .preorder-card > p {
+      font-size: 18px;
+      color: var(--text-light);
+      margin-bottom: 32px;
+    }
+    .delivery-info {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--teal-light);
+      color: var(--teal);
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 32px;
+    }
+    .contact-box {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #25d366;
+      color: var(--white);
+      padding: 18px 40px;
+      border-radius: 14px;
+      font-size: 20px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 8px 20px rgba(37,211,102,0.25);
+    }
+    .whatsapp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(37,211,102,0.35);
+    }
+    .phone-alt {
+      font-size: 16px;
+      color: var(--text-light);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      padding: 48px 24px;
+      text-align: center;
+    }
+    footer p { font-size: 14px; }
+    footer strong { color: var(--white); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 40px; }
+      .section-header h2 { font-size: 28px; }
+      .preorder-card { padding: 40px 24px; }
+      .preorder-card h2 { font-size: 28px; }
+    }
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .hero { padding: 120px 20px 80px; }
+      .hero h1 { font-size: 36px; }
+      section { padding: 60px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <!-- Replace src with your logo file path -->
+        <img src="mathakit-logo.jpg" alt="Mathakit Logo">
+        <span class="logo-text">Mathakit</span>
+      </a>
+      <div class="nav-links">
+        <a href="#methode">La méthode</a>
+        <a href="#kit">Le kit</a>
+        <a href="#videos">Vidéos</a>
+        <a href="#precommande" class="nav-cta">Précommander</a>
+      </div>
+      <button class="mobile-menu-btn" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Méthode de Singapour — Liban
+      </div>
+      <h1>Mathakit</h1>
+      <p class="tagline">Manipulation & Méthode de Singapour</p>
+      <p>Des kits pédagogiques complets avec vidéos tutoriels pour les écoles et les parents au Liban. Apprendre les mathématiques par le toucher, la vision et la compréhension en profondeur.</p>
+      <div class="hero-cta-group">
+        <a href="#precommande" class="btn btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Précommander maintenant
+        </a>
+        <a href="#kit" class="btn btn-secondary">Découvrir le kit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="kit">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2>Ce qui rend Mathakit unique</h2>
+        <p>Un kit pensé pour transformer l'apprentissage des mathématiques en expérience concrète et joyeuse.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🧱</div>
+          <h3>Manipulation concrète</h3>
+          <p>Blocs colorés, barres de dix, jetons et matériel tactiles de haute qualité. Les enfants touchent, déplacent et comprennent les concepts avant de les abstraire.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎥</div>
+          <h3>Vidéos tutoriels</h3>
+          <p>Chaque kit est accompagné de vidéos explicatives step-by-step pour guider les parents et les enseignants dans l'utilisation du matériel pédagogique.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📐</div>
+          <h3>Méthode de Singapour</h3>
+          <p>L'approche visuelle et en profondeur qui a propulsé Singapour au sommet des classements internationaux en mathématiques (TIMSS, PISA).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audience -->
+  <section class="audience">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2>Pour qui est Mathakit ?</h2>
+        <p>Que vous soyez école ou parent, Mathakit s'adapte à vos besoins.</p>
+      </div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <h3>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 4 3 9 3s9-1.34 9-3v-5"/></svg>
+            Pour les écoles
+          </h3>
+          <p>Commandes en volume avec tarifs préférentiels pour équiper toutes vos classes.</p>
+          <ul>
+            <li>Facturation officielle</li>
+            <li>Support pédagogique dédié</li>
+            <li>Formation des enseignants disponible</li>
+            <li>Livraison groupée sur tout le Liban</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <h3>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Pour les parents
+          </h3>
+          <p>Accompagnez votre enfant à la maison avec le même matériel utilisé dans les meilleures écoles.</p>
+          <ul>
+            <li>Guide parental inclus</li>
+            <li>Vidéos tutoriels accessibles 24/7</li>
+            <li>Progression adaptée à l'âge</li>
+            <li>Apprentissage ludique en famille</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Videos -->
+  <section id="videos" class="videos">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2>Vidéos tutoriels incluses</h2>
+        <p>Des centaines de minutes de contenu pédagogique pour maîtriser chaque concept étape par étape.</p>
+      </div>
+      <div class="video-grid">
+        <div class="video-placeholder">
+          <div class="play-btn">▶</div>
+          <span>Introduction à la méthode</span>
+        </div>
+        <div class="video-placeholder">
+          <div class="play-btn">▶</div>
+          <span>Les blocs de base</span>
+        </div>
+        <div class="video-placeholder">
+          <div class="play-btn">▶</div>
+          <span>Résolution de problèmes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preorder -->
+  <section id="precommande" class="preorder">
+    <div class="section-inner">
+      <div class="preorder-card">
+        <h2>Précommandez votre kit</h2>
+        <p>Contactez-nous dès maintenant pour réserver votre Mathakit. Les stocks sont limités pour la première livraison.</p>
+        <div class="delivery-info">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Livraison prévue en septembre 2026
+        </div>
+        <div class="contact-box">
+          <a href="https://wa.me/96170792384" class="whatsapp-btn" target="_blank" rel="noopener">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            +961 70 792 384
+          </a>
+          <p class="phone-alt">Disponible sur WhatsApp & appel</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p><strong>Mathakit</strong> — Manipulation & Méthode de Singapour</p>
+    <p style="margin-top:8px;">Liban · Contact: +961 70 792 384 · Livraison septembre 2026</p>
+  </footer>
+
+</body>
+</html>
